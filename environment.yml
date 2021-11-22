@@ -1,0 +1,20 @@
+name: rxfm
+channels:
+  - defaults
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.8
+  - pytorch
+  - torchvision
+  - cudatoolkit=11.3
+  - nilearn
+  - matplotlib
+  - seaborn
+  - black
+  - flake8
+  - nb_conda_kernels
+  - pip:
+      - seaborn_image
+      - pytorch3d @ https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py38_cu113_pyt110/download.html
+      - -e se3cnn/.
