@@ -1,0 +1,6 @@
+[submodule "rxfm-net"]
+	path = rxfm-net
+	url = https://github.com/dcmoyer/rxfm-net
+[submodule "se3cnn"]
+	path = se3cnn
+	url = https://github.com/mariogeiger/se3cnn
