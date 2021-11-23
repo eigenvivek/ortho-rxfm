@@ -1,4 +1,4 @@
-name: rxfm
+name: orthorxfm
 channels:
   - defaults
   - conda-forge
