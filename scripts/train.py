@@ -177,11 +177,8 @@ def train_func(net_obj, optimizer, loss_func, device, loader_dict, batch_size=1)
 
     # XFM LOSS
     real_xfm_1to2 = loader_dict["xfm_1to2"].to(device)
-    loss_val = (
-        loss_func(real_xfm_1to2, xfm_1to2)
-        + pairwise_ncc(output_1)
-        + pairwise_ncc(output_2)
-    )
+    loss_val = loss_func(real_xfm_1to2, xfm_1to2)
+    # loss_val += pairwise_ncc(output_1) + pairwise_ncc(output_2)
     del output_1, output_2
 
     loss_val.backward(retain_graph=True)
@@ -215,19 +212,19 @@ def main(n_epochs=100):
         print("Epoch: {} \tTraining Loss: {:.6f}".format(epoch, train_loss), flush=True)
 
     # Save the network
-    input_1 = loader_dict["scan_1"][0, 0, ...].cpu()
-    input_2 = loader_dict["scan_2"][0, 0, ...].cpu()
+    input_1 = loader_dict["scan_1"]  # [0, 0, ...].cpu()
+    input_2 = loader_dict["scan_2"]  # [0, 0, ...].cpu()
     net_obj.eval()
     xfm_1to2, output_1, output_2 = net_obj.forward(
         (input_1.to(device), input_2.to(device))
     )
     xfm_1to2 = xfm_1to2.cpu()
 
-    torch.save(output_1, "output_1.pt")
-    torch.save(output_2, "output_2.pt")
-    torch.save(input_1, "input_1.pt")
-    torch.save(input_2, "input_2.pt")
-    torch.save(net_obj, "normxcorr_weights.pth")
+    torch.save(output_1, "scripts/normal/output_1.pt")
+    torch.save(output_2, "scripts/normal/output_2.pt")
+    torch.save(input_1, "scripts/normal/input_1.pt")
+    torch.save(input_2, "scripts/normal/input_2.pt")
+    torch.save(net_obj, "scripts/normal/normal_weights.pth")
 
 
 if __name__ == "__main__":
