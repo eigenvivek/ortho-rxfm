@@ -15,6 +15,6 @@ dependencies:
   - flake8
   - nb_conda_kernels
   - pip:
-      - seaborn_image
-      - pytorch3d @ https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py38_cu113_pyt110/download.html
+      - https://dl.fbaipublicfiles.com/pytorch3d/packaging/wheels/py38_cu113_pyt110/download.html
       - -e se3cnn/.
+      - seaborn_image
